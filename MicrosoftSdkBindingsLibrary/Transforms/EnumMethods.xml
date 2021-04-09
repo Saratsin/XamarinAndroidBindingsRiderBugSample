@@ -1,0 +1,8 @@
+﻿<enum-method-mappings>
+
+  <mapping jni-class="sample/androidlibrary/StateProvider">
+    <method jni-name="getState" parameter="return" clr-enum-type="Sample.Androidlibrary.StateFlag" />
+    <method jni-name="setState" parameter="p0" clr-enum-type="Sample.Androidlibrary.StateFlag" />
+  </mapping>
+  
+</enum-method-mappings>

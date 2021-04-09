@@ -1,0 +1,10 @@
+﻿<enum-field-mappings>
+  
+  <mapping jni-class="sample/androidlibrary/StateProvider" clr-enum-type="Sample.Androidlibrary.StateFlag" bitfield="true">
+    <field jni-name="STATE_ON" clr-name="On" value="1 &lt;&lt; 1" />
+    <field jni-name="STATE_OFF" clr-name="Off" value="1 &lt;&lt; 2" />
+    <field jni-name="STATE_SUPERPOSITION" clr-name="Superposition" value="On | Off" />
+    <field jni-name="STATE_UNKNOWN" clr-name="Unknown" value="1 &lt;&lt; 3" />
+  </mapping>
+  
+</enum-field-mappings>

@@ -1,0 +1,38 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+    <PropertyGroup>
+        <TargetFramework>monoandroid10.0</TargetFramework>
+        <RootNamespace>MicrosoftSdkBindingsLibrary</RootNamespace>
+        <AssemblyName>Sample.Androidlibrary</AssemblyName>
+        <IsBindingProject>true</IsBindingProject>
+        <EnableDefaultItems>false</EnableDefaultItems>
+        <AndroidClassParser>class-parse</AndroidClassParser>
+        <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
+        <_EnableInterfaceMembers>true</_EnableInterfaceMembers>
+        <AndroidUseAapt2>true</AndroidUseAapt2>
+        <AndroidDexTool>d8</AndroidDexTool>
+        <AndroidLinkTool>r8</AndroidLinkTool>
+        <DisableExtraReferences>true</DisableExtraReferences>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <IncludeSymbols>true</IncludeSymbols>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <DesignTimeBuild>false</DesignTimeBuild>
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Additions\**\*.cs" />
+        <TransformFile Include="Transforms\**\*.xml" />
+        <LibraryProjectZip Include="Jars\static.androidlibrary.aar" Condition="!Exists('$(SolutionDir)\AndroidStudio\androidlibrary\build\outputs\aar\androidlibrary-release.aar')" />
+        <LibraryProjectZip Include="$(SolutionDir)\AndroidStudio\androidlibrary\build\outputs\aar\androidlibrary-release.aar" Condition="Exists('$(SolutionDir)\AndroidStudio\androidlibrary\build\outputs\aar\androidlibrary-release.aar')">
+            <Link>Jars\androidlibrary.aar</Link>
+        </LibraryProjectZip>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.2.0" />
+    </ItemGroup>
+</Project>
