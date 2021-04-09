@@ -6,6 +6,8 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+class InternalThing { }
+
 public abstract class StateProvider {
 
     @Documented
@@ -24,4 +26,6 @@ public abstract class StateProvider {
     public abstract @State int getState();
 
     public abstract void setState(@State int state);
+
+    public abstract void provideForbidden(InternalThing thing);
 }
